@@ -111,8 +111,8 @@ export default ({ onBack, onConfirm, title = 'Add a Server', initialData, parseQ
           />
         </div>
 
-        <InputWithLabel label="Proxy Override" value={proxyOverride} disabled={lockConnect && qsParamProxy !== null} onChange={({ target: { value } }) => setProxyOverride(value)} placeholder={placeholders?.proxyOverride} />
-        <InputWithLabel label="Username Override" value={usernameOverride} disabled={!noAccountSelected || lockConnect && qsParamUsername !== null} onChange={({ target: { value } }) => setUsernameOverride(value)} placeholder={placeholders?.usernameOverride} />
+        <InputWithLabel label="Proxy (Required for linking MS account)" value={proxyOverride} disabled={lockConnect && qsParamProxy !== null} onChange={({ target: { value } }) => setProxyOverride(value)} placeholder={placeholders?.proxyOverride} />
+        <InputWithLabel label="Username (Offline Only)" value={usernameOverride} disabled={!noAccountSelected || lockConnect && qsParamUsername !== null} onChange={({ target: { value } }) => setUsernameOverride(value)} placeholder={placeholders?.usernameOverride} />
         <label style={{
           display: 'flex',
           flexDirection: 'column',
@@ -129,9 +129,9 @@ export default ({ onBack, onConfirm, title = 'Add a Server', initialData, parseQ
             }}
             defaultValue={initialAccount === true ? -2 : initialAccount === undefined ? -1 : (fallbackIfNotFound((accounts ?? []).indexOf(initialAccount)) ?? -2)}
           >
-            <option value={-1}>Offline Account (Username)</option>
+            <option value={-1}>Offline Account</option>
             {accounts?.map((account, i) => <option key={i} value={i}>{account} (Logged In)</option>)}
-            <option value={-2}>Any other MS account</option>
+            <option value={-2}>Microsoft Acount</option>
           </select>
         </label>
 
